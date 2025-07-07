@@ -6,11 +6,11 @@ descriptoin: |
 inputs:
   message: # アクションの入力
     required: true
-    descriptoin: コミットメッセージ
+    description: コミットメッセージ
 outputs:
   branch:
     value: ${{ steps.pr.outputs.branch }}
-    descriptoin: プルリクエストのブランチ
+    description: プルリクエストのブランチ
 runs:
   using: composite
   steps:
