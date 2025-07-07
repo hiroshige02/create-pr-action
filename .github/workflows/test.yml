@@ -23,7 +23,7 @@ jobs:
           test "$(gh pr view "${BRANCH}" --json title --jq .title)" = "Test" #プルリクのタイトルがTestであるか
         env:
           BRANCH: ${{ steps.exercise.outputs.branch }}
-      - name: Teardown #テストの後始末
+      - name: Teardown # テストの後始末
         if: ${{ always() }}
         run: |
           gh pr close "${BRANCH}" || true
