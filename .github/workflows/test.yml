@@ -5,11 +5,11 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    permission:
+    permissions:
       contents: write
       pull-requests: write
     steps:
-      - uses: action/checkout@v4
+      - uses: actions/checkout@v4
       - name: Setup
         run: date > foo.md #プッシュ対象のダミーファイル作成
       - name: Exercise
