@@ -6,11 +6,11 @@ descriptoin: |
 inputs:
   message: # アクションの入力
     required: true
-    descriptoin: コミットメッセージ
+    description: コミットメッセージ
 outputs:
   branch:
     value: ${{ steps.pr.outputs.branch }}
-    descriptoin: プルリクエストのブランチ
+    description: プルリクエストのブランチ
 runs:
   using: composite
   steps:
@@ -30,4 +30,4 @@ runs:
         git add .
         git commit -m "${MESSAGE}"
         git push origin "${BRANCH}"
-        git pr create --head "${BRANCH}" --title "${MESSAGE}" --body "${MESSAGE}"
+        gh pr create --head "${BRANCH}" --title "${MESSAGE}" --body "${MESSAGE}"
