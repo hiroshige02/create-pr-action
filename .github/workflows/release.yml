@@ -20,6 +20,7 @@ jobs:
           BUMP_LEVEL: ${{ inputs.bump-level }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          chmod +x .github/scripts/bump.sh
           git config --global user.name "${USERNAME}"
           git config --global user.email "${EMAIL}"
           version="$(.github/scripts/bump.sh "${BUMP_LEVEL}")"
