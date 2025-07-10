@@ -1,4 +1,4 @@
-name: Prevent security misconfigurations
+name: Prevent Security Misconfigurations
 on: pull_request
 jobs:
   scan:
