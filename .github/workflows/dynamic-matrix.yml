@@ -1,0 +1,19 @@
+name: Dynamic matrix
+on: push
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    steps:
+      - id: dynamic
+        run: | #マトリックスs定義をJSON文字列で定義
+          json='{"runner":["ubuntu-24.04","macos-latest"]}'
+          echo "json=${json}" >> "${GITHUB_OUTPUT}"
+    outputs: #マトリックス定義のJSON文字列をジョブ出力値へセット
+      matrix-json: ${{ steps.dynamic.outputs.json }}
+  print:
+    needs: [prepare]
+    strategy: #JSON文字列からfromJSON関数で動的にマトリックスを生成
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix-json) }}
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "${RUNNER_OD}"
